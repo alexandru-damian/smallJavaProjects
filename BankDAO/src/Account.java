@@ -9,6 +9,10 @@ public class Account {
 		this.sumOfMoney = sumOfMoney;
 	}
 	
+	public Account(){
+		
+	}
+	
 	public int getId() {
 		return id;
 	}

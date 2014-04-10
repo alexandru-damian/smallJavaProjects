@@ -9,9 +9,6 @@ public class Client {
 		this.cnp = cnp;
 	}
 
-	public Client() {
-	}
-
 	public final void setId(int id) {
 		this.id = id;
 	}

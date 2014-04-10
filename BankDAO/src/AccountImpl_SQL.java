@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AccountImpl_SQL implements AccountDAO<Account> {
-	
+
 	ConnectionDAO connectionDAO = new ConnectionDAO();
-	
+
 	@Override
 	public void add(Account account) {
 		try {
@@ -90,6 +90,8 @@ public class AccountImpl_SQL implements AccountDAO<Account> {
 			return null;
 		}
 	}
+	
+	
 
 	@Override
 	public Map<Integer, Account> getList() {
@@ -112,6 +114,23 @@ public class AccountImpl_SQL implements AccountDAO<Account> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public void removeAll(Client client) {
+
+		try {
+
+			Connection connection = connectionDAO.getConnection();
+			PreparedStatement ps = connection.prepareStatement(
+					"delete from accounts where cnp= ?",
+					Statement.NO_GENERATED_KEYS);
+			ps.setString(1, client.getCnp());
+			ps.executeUpdate();
+			connectionDAO.closeConnection(connection);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

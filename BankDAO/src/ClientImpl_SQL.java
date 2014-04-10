@@ -115,5 +115,31 @@ public class ClientImpl_SQL implements ClientDAO<Client> {
 			return null;
 		}
 	}
+	
+	@Override
+	public Client findByCnp(String cnp) {
 
+		Client client = null;
+
+		try {
+			Connection connection = connectionDAO.getConnection();
+			PreparedStatement ps = connection.prepareStatement(
+					"select * from clients where cnp=?",
+					Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, cnp);
+			ResultSet result = ps.executeQuery();
+			if (result.next()) {
+				int idFound = result.getInt("id");
+				String nameFound = result.getString("name");
+				String cnpFound = result.getString("cnp");
+				client = new Client(idFound, nameFound, cnpFound);
+			}
+			connectionDAO.closeConnection(connection);
+			return client;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }
