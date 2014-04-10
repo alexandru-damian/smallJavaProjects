@@ -4,19 +4,6 @@ public class ConsoleMenu {
 
 	public static Scanner scanner = new Scanner(System.in);
 
-	private void infoAccountMenu() {
-		System.out.println();
-		System.out.println("============================");
-		System.out.println("|	  ACCOUNT OPTIONS      |");
-		System.out.println("----------------------------");
-		System.out.println("|1.    Add new account     |");
-		System.out.println("|2.    Remove an account   |");
-		System.out.println("|3.    Select an account   |");
-		System.out.println("|4.    List accounts       |");
-		System.out.println("|0.    		BACK           |");
-		System.out.println("============================");
-	}
-
 	private void infoProgram() {
 		System.out.println("============================");
 		System.out.println("| BANK SIMULATOR DAO(BETA) |");
@@ -93,9 +80,4 @@ public class ConsoleMenu {
 		}
 		return status;
 	}
-	
-	private void edit(){
-		System.out.println("Select");
-	}
-
 }
